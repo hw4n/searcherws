@@ -41,7 +41,9 @@ export class BrowserManager {
 
     async webSearch(keyword: string) {
         const page = await this.createPage();
-        await page.goto(`https://html.duckduckgo.com/html?q=${keyword}`);
+        await page.goto(
+            `https://html.duckduckgo.com/html?kl=kr-kr&q=${keyword}`
+        );
         await page.waitForLoadState("domcontentloaded");
 
         // execute the stuff
