@@ -68,12 +68,15 @@ export function createServer() {
 
             const { keyword } = request.body as { keyword: string };
 
-            const snippets = await browserManager.webSearch(keyword);
+            console.log("request.body", request.body);
+            console.log("keyword", keyword);
+
+            // const snippets = await browserManager.webSearch(keyword);
 
             reply.send({
                 keyword,
                 success: true,
-                snippets,
+                // snippets,
             });
         } catch (error) {
             const errorMessage =
