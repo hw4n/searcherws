@@ -66,17 +66,17 @@ export function createServer() {
                 return;
             }
 
-            const { keyword } = request.body as { keyword: string };
+            // console.log("request.body", request.body);
+            // request.body { args: '{"keyword":"xxxxxxxxxxx"}' }
+            const { args } = request.body as { args: string };
+            const { keyword } = JSON.parse(args);
 
-            console.log("request.body", request.body);
-            console.log("keyword", keyword);
-
-            // const snippets = await browserManager.webSearch(keyword);
+            const snippets = await browserManager.webSearch(keyword);
 
             reply.send({
                 keyword,
                 success: true,
-                // snippets,
+                snippets,
             });
         } catch (error) {
             const errorMessage =
